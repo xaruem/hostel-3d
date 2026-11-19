@@ -1,0 +1,4 @@
+3D models (Khronos glTF-Sample-Assets, github.com/KhronosGroup/glTF-Sample-Assets):
+- SheenChair — Wayfair, CC0 1.0
+- GlamVelvetSofa, ChairDamaskPurplegold, IridescenceLamp — Wayfair / Eric Chadwick, CC BY 4.0 (attribution required, commercial use allowed)
+Keep the credit line in the page footer (#cr) when using CC BY models.
