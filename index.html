@@ -156,6 +156,15 @@ body.in #iv{display:flex}body.in .panel,body.in .floors,body.in #poi,body.in #pi
 #iv .hint{font-size:12px;color:var(--mut);align-self:center;padding:0 8px}
 #cr{position:fixed;left:84px;bottom:2px;z-index:1;font-size:10px;color:#fff;opacity:.55;pointer-events:none;text-shadow:0 1px 3px rgba(0,0,0,.6)}
 @media(max-width:760px){#poi{left:68px}body.picked #poi{display:none}#cr{display:none}}
+/* ===== мобильная шапка и окно времени ===== */
+.ttl{min-width:0;flex:0 1 auto;overflow:hidden}.ttl h1{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.tools{flex:none}
+@media(max-width:760px){
+ .top{padding-left:8px;padding-right:8px}.tools{gap:6px}
+ .pop{position:fixed;left:8px;right:8px;top:calc(60px + env(safe-area-inset-top,0px));width:auto;max-height:calc(100vh - 76px);max-height:calc(100dvh - 76px);overflow:auto;transform-origin:top center}
+ .pre{gap:8px}.pre button{height:52px}.pre button svg{width:30px;height:30px}
+ #time{height:32px;touch-action:pan-y}
+ .nbt{display:none}#nb{width:40px;padding:0}
+}
 </style>
 </head>
 <body>
@@ -938,7 +947,7 @@ const homePos=()=>{const k=innerWidth/innerHeight<1?1+(1-innerWidth/innerHeight)
 const poiBar=Q('#poi'),pins=POIL.map(p=>{const d=document.createElement('div');d.className='pin glass';d.innerHTML=p.t+' '+p.n+'<small>'+p.m+'</small>';Q('#pins').appendChild(d);return{d,v:V(p.x,(p.h||6)+2,p.z)}});
 POIL.forEach(p=>{const b=document.createElement('button');b.className='chip';b.textContent=p.t+' '+p.n;
  b.onclick=()=>{setFloor(0);fly(V(p.x+26,15,p.z+44),V(p.x,(p.h||6)/2,p.z))};poiBar.appendChild(b)});
-let near=true;const nb=document.createElement('button');nb.className='pill';nb.id='nb';nb.textContent='📍 Рядом';nb.style.padding='0 14px';
+let near=true;const nb=document.createElement('button');nb.className='pill';nb.id='nb';nb.innerHTML='📍<span class="nbt"> Рядом</span>';
 Q('.tools').insertBefore(nb,Q('#qual'));
 const setNear=o=>{near=o;poiBar.classList.toggle('off',!o);nb.style.borderColor=o?'var(--acc)':''};nb.onclick=()=>setNear(!near);
 /* ---------- выбор квартиры ---------- */
